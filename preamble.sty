@@ -37,3 +37,39 @@
     \fi
 }
 
+\newcommand{\pgraph}[5]{
+   \resizebox{#5\textwidth}{!}{ 
+    \centering
+    \begin{tikzpicture}   	
+        \begin{polaraxis}[
+        xticklabels={,0,$\frac\tau{12}$,$\frac\tau6$,$\frac\tau4$,$\frac{\tau}3$,$\frac{5\tau}{12}$,
+    $\frac{\tau}{2}$,$\frac{7\tau}{12}$,$\frac{2\tau}3$,$\frac{3\tau}4$,$\frac{5\tau}6$,$\frac{11\tau}{12}$}
+        ]
+            \addplot+[mark=none,domain=#2:#3,samples=600] 
+    		{#1};
+    	% equivalent to (x,{sin(..)cos(..)}), i.e.
+    	% the expression is the RADIUS
+    	\end{polaraxis}
+    \end{tikzpicture}
+    }
+\caption{#4}
+}
+
+\newcommand{\graph}[5]{
+\centering
+ \resizebox{#5\textwidth}{!}{
+  \begin{tikzpicture}
+    \begin{axis}[
+      axis lines = middle, % Places the axes in the middle
+      xlabel = {$x$}, % Label for the x-axis
+      ylabel = {$y$}, % Label for the y-axis
+      grid=major,
+      width=8cm,
+      height=8cm
+    ]
+      \addplot[domain=#2:#3, samples=100, color=blue]{#1};
+    \end{axis}
+  \end{tikzpicture}
+  }
+\caption{#4}
+}
