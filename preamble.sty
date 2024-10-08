@@ -1,0 +1,39 @@
+\ProvidesPackage{preamble}
+
+\usepackage{graphicx} % Required for inserting images
+\usepackage[margin=1in]{geometry}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multicol}
+\setlength{\parskip}{0.5cm}  % Set vertical space between paragraphs
+\setlength{\parindent}{0pt}  % Remove paragraph indentation
+\usepackage{xparse}
+
+\newcommand\pder[2]{%
+    \begingroup
+    \@temptokena{\@gobble}%
+    \@tempcnta\z@
+    \@for\var:=#2\do{%
+        \expandafter\@pder\var\relax
+    }%
+    \ensuremath{\frac{\partial
+    \ifnum\@tempcnta>\@ne
+        ^{\the\@tempcnta}%
+    \fi
+    #1}{\the\@temptokena}}%
+    \endgroup
+}
+
+\def\@pder#1#2\relax{%
+    \ifx\relax#2\relax
+        \advance\@tempcnta by \@ne
+        \@temptokena\expandafter{\the\@temptokena\,\partial{#1}}%
+    \else
+        \advance\@tempcnta by #2\relax
+        \@temptokena\expandafter{\the\@temptokena\,\partial{#1}^{#2}}%
+    \fi
+}
+
