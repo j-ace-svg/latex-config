@@ -74,3 +74,23 @@
   }
 \caption{#4}
 }
+
+\newcommand{\longdivision}[2]{
+    \settowidth{\dividendlength}{#1}
+    \settowidth{\divisorlength}{#2}
+    \settoheight{\dividendheight}{#1}
+    \settoheight{\maxheight}{#1#2}
+    \settoheight{\divisorheight}{#2}
+
+    \begin{tikzpicture} [baseline=.5pt]
+        \node at (-.5*\divisorlength-1pt,.5*\divisorheight) {#2};
+        \node at (.5*\dividendlength+5pt,.5*\dividendheight) {#1};
+        \draw [thick]  (0pt,-.22*\dividendheight) arc (-70:60:\maxheight*.41 and \maxheight*.82) -- ++(\dividendlength+7pt,0pt);
+    \end{tikzpicture}
+}
+
+\newlength{\dividendlength}
+\newlength{\divisorlength}
+\newlength{\dividendheight}
+\newlength{\divisorheight}
+\newlength{\maxheight}
