@@ -83,13 +83,14 @@
     \left[\begin{array}{#1} #2\end{array}\right]
 }
 
-\newcommand{\gamematrix}[4]{%
-    \def\tempplayera{#1}
-    \def\tempplayerb{#2}
-    \def\tempplayeracoop{#3}
-    \def\tempplayeracomp{#4}
-    \def\tempplayerbcoop{#3}
-    \def\tempplayerbcomp{#4}
+\newcommand{\gamematrix}[5][0.7]{%
+    \def\tempwidth{#1}
+    \def\tempplayera{#2}
+    \def\tempplayerb{#3}
+    \def\tempplayeracoop{#4}
+    \def\tempplayeracomp{#5}
+    \def\tempplayerbcoop{#4}
+    \def\tempplayerbcomp{#5}
     \gamematrixwrapper
 }
 
@@ -104,7 +105,7 @@
 }
 
 \newcommand{\gamematrixwrapper}[4]{%
-    \begin{tabularx}{0.7\textwidth}{
+    \begin{tabularx}{\tempwidth\textwidth}{
         |>{\centering\arraybackslash}X
          >{\centering\arraybackslash}X
         |>{\centering\arraybackslash}X
