@@ -78,8 +78,29 @@
   }
 \caption{#4}
 }
-\newlength{\dividendlength}
-\newlength{\divisorlength}
-\newlength{\dividendheight}
-\newlength{\divisorheight}
-\newlength{\maxheight}
+
+\newcommand{\gamematrix}[6]{%
+    \def\tempplayera{#1}
+    \def\tempplayeracoop{#2}
+    \def\tempplayeracomp{#3}
+    \def\tempplayerb{#4}
+    \def\tempplayerbcoop{#5}
+    \def\tempplayerbcomp{#6}
+    \gamematrixwrapper
+}
+
+\newcommand{\gamematrixwrapper}[4]{%
+    \begin{tabularx}{0.7\textwidth}{
+        |>{\centering\arraybackslash}X
+         >{\centering\arraybackslash}X
+        |>{\centering\arraybackslash}X
+         >{\centering\arraybackslash}X|}
+        \hline
+         & & \multicolumn{2}{c|}{\tempplayera}\\
+         & & \tempplayeracoop & \tempplayeracomp\\
+        \hline
+        \multirow{2}{*}{\tempplayerb} & \tempplayeracoop & #1 & #2\\
+         & \tempplayeracomp & #3 & #4\\
+        \hline
+    \end{tabularx}
+}
