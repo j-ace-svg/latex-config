@@ -79,6 +79,7 @@
 \caption{#4}
 }
 
+% Game Theory
 \newcommand{\altmatrix}[2]{%
     \left[\begin{array}{#1} #2\end{array}\right]
 }
@@ -119,4 +120,23 @@
          & \tempplayerbcomp & #3 & #4\\
         \hline
     \end{tabularx}
+}
+
+% Good binary notation
+\newcommand{\+}{\mkern2mu}
+\newcommand{\0}{
+    \ensuremath
+    \+
+    \begin{tikzpicture}
+       \draw (0, 0) -- (0, 1ex);
+    \end{tikzpicture}
+    \+
+}
+\newcommand{\1}{
+    \ensuremath
+    \+
+    \begin{tikzpicture}
+       \draw (0, 0) -- (0, 2ex);
+    \end{tikzpicture}
+    \+
 }
